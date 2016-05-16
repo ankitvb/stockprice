@@ -46,7 +46,7 @@ def get_data(stock_args):
   # Parameters for call to the Quandl API
 
   # Get column ids for data of interest
-  col_list = [data_cols.index(translate[key]) for key in stock_args]
+  col_list = [data_cols.index(translate[key]) for key,_ in stock_args.items()]
   print col_list
 
   # Get data from Quandl
