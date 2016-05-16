@@ -46,8 +46,10 @@ def get_data(stock_args):
   # Parameters for call to the Quandl API
 
   # Get column ids for data of interest
-  col_list = [data_cols.index(translate[key]) for key,_ in stock_args.items()]
-  print col_list
+  for key in stock_args:
+    print key
+  #col_list = [data_cols.index(translate[key]) for key,_ in stock_args.items()]
+  #print col_list
 
   # Get data from Quandl
   # and convert to list of lists to be consumed by pandas
@@ -56,6 +58,7 @@ def get_data(stock_args):
 
   res = requests.get(qdl_full_url)
   data = [line for line in res.iter_lines()]  
+  headers = data.pop(0)
 
   # Dump data into Pandas dataframe
   df = pd.DataFrame(data, columns=headers)
