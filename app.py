@@ -47,7 +47,7 @@ def get_data(stock_args):
 
   # Get column ids for data of interest
   for key in stock_args:
-    print key
+    print translate[key]
   #col_list = [data_cols.index(translate[key]) for key,_ in stock_args.items()]
   #print col_list
 
@@ -59,6 +59,7 @@ def get_data(stock_args):
   res = requests.get(qdl_full_url)
   data = [line for line in res.iter_lines()]  
   headers = data.pop(0)
+  print headers
 
   # Dump data into Pandas dataframe
   df = pd.DataFrame(data, columns=headers)
