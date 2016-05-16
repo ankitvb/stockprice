@@ -46,11 +46,11 @@ def get_data(stock_args):
   # Parameters for call to the Quandl API
 
   # Get column ids for data of interest
-  for key in stock_args:
-    if key != 'ticker':
-      print translate[key]
-  #col_list = [data_cols.index(translate[key]) for key,_ in stock_args.items()]
-  #print col_list
+  #for key in stock_args:
+  #  if key != 'ticker':
+  #    print translate[key]
+  col_list = [data_cols.index(translate[key]) for key in stock_args and not in ['ticker']]
+  print col_list
 
   # Get data from Quandl
   # and convert to list of lists to be consumed by pandas
