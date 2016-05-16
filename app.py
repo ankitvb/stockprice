@@ -9,8 +9,11 @@ def main():
 @app.route('/index', methods=['GET','POST'])
 def index():
   try:
+    print "Before GET"
     if request.method == 'GET':
+      print "Inside GET"
       if request.form.args is not None:
+        print "Inside form args"
         print request.form.args['ticker']
       else:
         print "Args not found"
