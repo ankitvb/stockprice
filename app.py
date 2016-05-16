@@ -12,9 +12,9 @@ def index():
     print "Before GET"
     if request.method == 'GET':
       print "Inside GET"
-      if request.form.args is not None:
-        print "Inside form args"
-        print request.form.args['ticker']
+      if request.args is not None:
+        print "Inside request->args"
+        print request.args
       else:
         print "Args not found"
   except:
