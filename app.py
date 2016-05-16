@@ -56,8 +56,8 @@ def get_data(stock_args):
 
   res = requests.get(qdl_full_url)
   data = [list(line.split(',')) for line in res.iter_lines()] 
-  headers = data.pop(0)
-  headers = list(headers.split(','))
+  headers = data[0]
+  #headers = list(headers.split(','))
   print headers
 
   # Dump data into Pandas dataframe
