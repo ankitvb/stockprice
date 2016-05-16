@@ -55,14 +55,17 @@ def get_data(stock_args):
                + "?api_key="+api_key
 
   res = requests.get(qdl_full_url)
-  data = [list(line.split(',')) for line in res.iter_lines()] 
-  headers = data[0]
-  #headers = list(headers.split(','))
-  print headers
-
-  # Dump data into Pandas dataframe
-  df = pd.DataFrame(data, columns=headers)
-  print df 
+  if res.status_code != 200:
+    print "Could not get data from Quandl"
+  else:
+    data = [list(line.split(',')) for line in res.iter_lines()] 
+    headers = data[0]
+    #headers = list(headers.split(','))
+    print headers
+  
+    # Dump data into Pandas dataframe
+    df = pd.DataFrame(data, columns=headers)
+    print df 
 
 
 #@app.route('/plot')
