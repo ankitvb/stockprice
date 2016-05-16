@@ -10,7 +10,7 @@ def main():
 def index():
   try:
     if request.method == 'GET':
-      print request.form['ticker']
+      print request.form.args
   except:
     pass
   else:
