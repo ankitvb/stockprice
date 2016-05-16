@@ -47,7 +47,8 @@ def get_data(stock_args):
 
   # Get column ids for data of interest
   for key in stock_args:
-    print translate[key]
+    if key != 'ticker'
+      print translate[key]
   #col_list = [data_cols.index(translate[key]) for key,_ in stock_args.items()]
   #print col_list
 
