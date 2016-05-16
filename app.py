@@ -10,7 +10,7 @@ def main():
 def index():
   if request.method == 'GET':
     print request.form['ticker']
-    print requet.form['open']
+    #print requet.form['open']
     #ticker = request.form['ticker']
     #close = request.form['close']
     #adjClose = request.form['adjClose']  
