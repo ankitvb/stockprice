@@ -6,18 +6,19 @@ app = Flask(__name__)
 def main():
   return redirect('/index')
 
-@app.route('/index')
+@app.route('/index', methods=['GET','POST'])
 def index():
-#  if request.POST:
-#    ticker = request.POST['ticker']
-#    close = request.POST['close']
-#    adjClose = request.POST['adjClose']  
-#    open_ = request.POST['open']
-#    adjOpen = request.POST['adjOpen']
-#
-#    print ticker, close, open_
+  if request.method == GET:
+    ticker = request.form['ticker']
+    close = request.form['close']
+    adjClose = request.form['adjClose']  
+    open_ = request.form['open']
+    adjOpen = request.form['adjOpen']
+
+    print ticker, close, open_
 
   return render_template('index.html')
 
 if __name__ == '__main__':
+  app.debug = True
   app.run(port=33507)
