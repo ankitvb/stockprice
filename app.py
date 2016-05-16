@@ -49,7 +49,7 @@ def get_data(stock_args):
   #for key in stock_args:
   #  if key != 'ticker':
   #    print translate[key]
-  col_list = [data_cols.index(translate[key]) for key in stock_args and not in ['ticker']]
+  col_list = [data_cols.index(translate[key]) for key in stock_args if key not in ['ticker']]
   print col_list
 
   # Get data from Quandl
