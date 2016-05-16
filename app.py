@@ -9,7 +9,7 @@ def main():
 @app.route('/index', methods=['GET','POST'])
 def index():
   if request.method == 'GET':
-    print dir(request)
+    print request.form
     #ticker = request.form['ticker']
     #close = request.form['close']
     #adjClose = request.form['adjClose']  
