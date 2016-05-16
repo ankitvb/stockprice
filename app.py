@@ -11,7 +11,7 @@ def index():
   try:
     if request.method == 'GET':
       if request.args is not None:
-        print request.view_args({'ticker':'','open':'','close':'','adjOpen':'','adjClose':''})
+        print dict(request.view_args.items())
       else:
         print "Args not found"
   except:
