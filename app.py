@@ -10,7 +10,7 @@ def main():
 def index():
   try:
     if request.method == 'GET':
-      print request.form.args
+      print "Hello!"
   except:
     pass
   else:
