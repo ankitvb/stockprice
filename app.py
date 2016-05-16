@@ -48,7 +48,7 @@ def get_data(stock_args):
   res = requests.get(qdl_full_url)
   data = [line for line in res.iter_lines()]  
 
-  print data
+  print cols.index(translate['adjClose'])
 
 #@app.route('/plot')
 #def plot(request_args):
