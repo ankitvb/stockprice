@@ -10,6 +10,7 @@ def main():
 
 @app.route('/index', methods=['GET','POST'])
 def index():
+  # See if we have params to process
   try:
     if request.method == 'GET':
       if request.args is not None:
@@ -28,6 +29,7 @@ def get_data(stock_args):
   qdl_base_url = "https://www.quandl.com/api/v3/datasets/WIKI/"
   api_key = "QndbBLZGfwiqgg_MkvWW" 
   
+  # Translate from template variables to API variables
   translate = {'open':'Open',
                'close':'Close',
                'volume':'Volume',
@@ -36,19 +38,29 @@ def get_data(stock_args):
                'adjVolume':'Adj. Volume'
               }
 
-  cols = ['Date','Open','High','Low','Close','Volume',
-          'Ex-Dividend','Split' 'Ratio',
-          'Adj. Open','Adj. High','Adj. Low','Adj. Close','Adj. Volume']
+  # Default columns in Quandl stock data
+  data_cols = ['Date','Open','High','Low','Close','Volume',
+               'Ex-Dividend','Split' 'Ratio',
+               'Adj. Open','Adj. High','Adj. Low','Adj. Close','Adj. Volume']
 
-  
+  # Parameters for call to the Quandl API
+
+  # Get column ids for data of interest
+  col_list = [data_cols.index(translate[key]) for key in stock_args]
+  print col_list
+
+  # Get data from Quandl
+  # and convert to list of lists to be consumed by pandas
   qdl_full_url = qdl_base_url + stock_args['ticker'] + ".csv" \
                + "?api_key="+api_key
-  print qdl_full_url
 
   res = requests.get(qdl_full_url)
   data = [line for line in res.iter_lines()]  
 
-  print cols.index(translate['adjClose'])
+  # Dump data into Pandas dataframe
+  df = pd.DataFrame(data, columns=headers)
+  print df 
+
 
 #@app.route('/plot')
 #def plot(request_args):
