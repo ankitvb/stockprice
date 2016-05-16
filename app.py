@@ -64,7 +64,7 @@ def get_data(stock_args):
     print headers
   
     # Dump data into Pandas dataframe
-    df = pd.DataFrame(data, columns=headers)
+    df = pd.DataFrame(data[1:], columns=headers)
     print df 
 
 
