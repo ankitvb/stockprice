@@ -8,12 +8,12 @@ def main():
 
 @app.route('/index')
 def index(request):
-  if request.GET:
-    ticker = request.GET['ticker']
-    close = request.GET['close']
-    adjClose = request.GET['adjClose']  
-    open_ = request.GET['open']
-    adjOpen = request.GET['adjOpen']
+  if request.POST:
+    ticker = request.POST['ticker']
+    close = request.POST['close']
+    adjClose = request.POST['adjClose']  
+    open_ = request.POST['open']
+    adjOpen = request.POST['adjOpen']
 
     print ticker, close, open_
 
