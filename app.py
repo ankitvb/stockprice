@@ -11,7 +11,7 @@ def index():
   try:
     if request.method == 'GET':
       if request.form.args is not None:
-        print request.form.args
+        print request.form.args['ticker']
       else:
         print "Args not found"
   except:
