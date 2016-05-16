@@ -11,7 +11,7 @@ def index():
   try:
     if request.method == 'GET':
       if request.args is not None:
-        print dict(request.view_args.items())
+        print dict(request.view_args.items()+request.args.to_dict().items())
       else:
         print "Args not found"
   except:
