@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 import requests
+import pandas as pd
 
 app = Flask(__name__)
 
@@ -40,7 +41,7 @@ def get_data(stock_args):
           'Adj. Open','Adj. High','Adj. Low','Adj. Close','Adj. Volume']
 
   
-  qdl_full_url = qdl_base_url + stock_args['ticker'] + ".csv"
+  qdl_full_url = qdl_base_url + stock_args['ticker'] + ".csv" \
                + "?api_key="+api_key
   print qdl_full_url
 
