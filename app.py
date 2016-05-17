@@ -22,8 +22,8 @@ def index():
         df = get_data(stock_args)
         if df is not None:
           script,div = plot(df, stock_args['ticker'])
-          print 'script', script
-          print 'div', div
+          print script
+          print div
           return render_template('plot.html', script=script, div=div)
         else:
           print "Failed to get data. Abort."
@@ -76,7 +76,7 @@ def get_data(stock_args):
     data = [list(line.split(',')) for line in res.iter_lines()] 
     headers = data[0]
     #headers = list(headers.split(','))
-    print headers
+    #print headers
   
     # Dump data into Pandas dataframe
     df = pd.DataFrame(data[1:], columns=headers)
