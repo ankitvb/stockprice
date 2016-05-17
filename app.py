@@ -94,16 +94,14 @@ def plot_stock(stock_df,symbol):
   # Create plot
   p = figure(title='GOOG', y_axis_label='Price', x_axis_label='Date', x_axis_type='datetime')
 
-  print "After creating figure"
+  print "Created figure object"
 
   p.line(dates, opens, legend="Open", line_color="blue")
   p.line(dates, closes, legend="Close", line_color="red")
 
   script, div = components(p)
-  show(p)
-
+  
   print "Plotting figure"
-  #show(p)
 
   return render_template('plot.html', script=script, div=div)
 
