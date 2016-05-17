@@ -22,7 +22,7 @@ def index():
         df = get_data(stock_args)
         if df is not None:
           script,div = plot(df, stock_args['ticker'])
-          return render_template('plot.html')
+          return render_template('plot.html', script=script, div=div)
         else:
           print "Failed to get data. Abort."
       else:
