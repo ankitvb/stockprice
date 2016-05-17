@@ -95,18 +95,18 @@ def plot(stock_df,symbol):
   #opens = stock_df['Open'].tolist()
   #closes = stock_df['Close'].tolist()
   reduced_df = stock_df[['Date','Open','Close']].copy()
-  reduced_df.head(n=5)
+  reduced_df = reduced_df.head(n=5)
 
   print reduced_df
   # Create plot
   #p = figure(title='GOOG', y_axis_label='Price', x_axis_label='Date', x_axis_type='datetime')
-  #p = Line(reduced_df, legend="top_right", ylabel="Price")
+  p = Line(reduced_df, x='Date', y='Open', legend="top_right", ylabel="Price")
 
   #p.line(dates, closes, legend="Close", line_color="red")
 
-  xyvalues = np.array([[2, 3, 7, 5, 26], [12, 33, 47, 15, 126], [22, 43, 10, 25, 26]])
+  #xyvalues = np.array([[2, 3, 7, 5, 26], [12, 33, 47, 15, 126], [22, 43, 10, 25, 26]])
 
-  p = Line(xyvalues, title="line", legend="top_left", ylabel='Languages')
+  #p = Line(xyvalues, title="line", legend="top_left", ylabel='Languages')
 
   script, div = components(p,CDN)
   
