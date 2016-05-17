@@ -17,7 +17,11 @@ def index():
     if request.method == 'GET':
       if request.args is not None:
         stock_args = dict(request.args.to_dict().items())
-        get_data(stock_args)
+        df = get_data(stock_args)
+        if df is not None:
+          plot(df, stock_args['ticker'])
+        else:
+          print "Failed to get data. Abort."
       else:
         print "Args not found"
   except:
@@ -62,6 +66,7 @@ def get_data(stock_args):
   res = requests.get(qdl_full_url)
   if res.status_code != 200:
     print "Could not get data from Quandl. Check ticker name"
+    return None
   else:
     data = [list(line.split(',')) for line in res.iter_lines()] 
     headers = data[0]
@@ -72,15 +77,14 @@ def get_data(stock_args):
     df = pd.DataFrame(data[1:], columns=headers)
     #print df 
 
-    plot(df,stock_args['ticker'])
-
-  return   
+  return df  
 
 @app.route('/plot')
 def plot(stock_df,symbol):
   """Generate a embedded html plot from dataframe data with Bokeh
   """
   # output to static HTML file
+  print "Setting output file"
   output_file("plot.html")    
 
   dates = stock_df['Date'].tolist()
