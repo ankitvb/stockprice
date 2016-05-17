@@ -21,7 +21,7 @@ def index():
         stock_args = dict(request.args.to_dict().items())
         df = get_data(stock_args)
         if df is not None:
-          plot(df, stock_args['ticker'])
+          return redirect(url_for(plot)) #plot(df, stock_args['ticker'])
         else:
           print "Failed to get data. Abort."
       else:
