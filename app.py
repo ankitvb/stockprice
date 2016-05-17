@@ -103,7 +103,7 @@ def plot(stock_df,symbol):
   print "Plotting figure"
   show(p)
 
-  return
+  return render_template('plot.html')
 
 #  return render_template('plot.html')
 
