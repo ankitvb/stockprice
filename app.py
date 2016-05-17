@@ -21,7 +21,8 @@ def index():
         stock_args = dict(request.args.to_dict().items())
         df = get_data(stock_args)
         if df is not None:
-          return redirect(url_for(plot)) #plot(df, stock_args['ticker'])
+          script,div = plot(df, stock_args['ticker'])
+          return render_template('plot.html')
         else:
           print "Failed to get data. Abort."
       else:
@@ -31,7 +32,7 @@ def index():
   #else:
   #  return render_template('index.html')
 
-  return #render_template('index.html')
+  return render_template('index.html')
 
 def get_data(stock_args):
   """Getting data from Quandl API and putting it into Pandas dataframe
@@ -103,7 +104,7 @@ def plot(stock_df,symbol):
   
   print "Plotting figure"
 
-  return render_template('plot.html')
+  return script, div #render_template('plot.html')
 
 #  return render_template('plot.html')
 
