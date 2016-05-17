@@ -83,8 +83,8 @@ def plot(stock_df,symbol):
   # output to static HTML file
   output_file("plot.html")    
 
-  print stock_df['Date']
-  print stock_df['Open']
+  print stock_df['Date'].tolist()
+  print stock_df['Open'].tolist()
   
   # Create plot
   p = figure(
