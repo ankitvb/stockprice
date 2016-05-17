@@ -94,9 +94,10 @@ def plot(stock_df,symbol):
   #dates = stock_df['Date'].tolist()
   #opens = stock_df['Open'].tolist()
   #closes = stock_df['Close'].tolist()
-  reduced_df = stock_df[['Open','Close']].copy()
+  reduced_df = stock_df[['Date','Open','Close']].copy()
   reduced_df.head(n=5)
 
+  print reduced_df
   # Create plot
   #p = figure(title='GOOG', y_axis_label='Price', x_axis_label='Date', x_axis_type='datetime')
   #p = Line(reduced_df, legend="top_right", ylabel="Price")
