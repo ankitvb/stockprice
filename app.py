@@ -31,7 +31,7 @@ def index():
   #else:
   #  return render_template('index.html')
 
-  return render_template('index.html')
+  return #render_template('index.html')
 
 def get_data(stock_args):
   """Getting data from Quandl API and putting it into Pandas dataframe
