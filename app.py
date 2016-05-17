@@ -84,7 +84,7 @@ def get_data(stock_args):
     for col in data_cols:
       if col is not 'Date':
         print col
-        df[col] = df[col].astype(float).fillna(0.0)
+        df[str(col)] = df[str(col)].astype(float)
 
     print df 
 
