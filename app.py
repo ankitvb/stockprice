@@ -22,8 +22,6 @@ def index():
         df = get_data(stock_args)
         if df is not None:
           script,div = plot(df, stock_args['ticker'])
-          print script
-          print div
           return render_template('plot.html', script=script, div=div)
         else:
           print "Failed to get data. Abort."
@@ -100,7 +98,7 @@ def plot(stock_df,symbol):
   print "Created figure object"
 
   p.line(dates, opens, legend="Open", line_color="blue")
-  p.line(dates, closes, legend="Close", line_color="red")
+  #p.line(dates, closes, legend="Close", line_color="red")
 
   script, div = components(p)
   
