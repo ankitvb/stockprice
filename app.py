@@ -76,7 +76,7 @@ def get_data(stock_args):
 
   return   
 
-#@app.route('/plot')
+@app.route('/plot')
 def plot(stock_df,symbol):
   """Generate a embedded html plot from dataframe data with Bokeh
   """
