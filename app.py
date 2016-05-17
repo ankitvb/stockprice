@@ -92,7 +92,7 @@ def plot_stock(stock_df,symbol):
   closes = stock_df['Close'].tolist()
 
   # Create plot
-  p = figure(title='GOOG', y_axis_label='Price', x_axis_label='Date')
+  p = figure(title='GOOG', y_axis_label='Price', x_axis_label='Date', x_axis_type='datetime')
 
   print "After creating figure"
 
