@@ -1,5 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from bokeh.plotting import figure, output_file, show
+from bokeh.embed import components 
+
 import requests
 import pandas as pd
 
@@ -83,29 +85,31 @@ def get_data(stock_args):
 def plot(stock_df,symbol):
   """Generate a embedded html plot from dataframe data with Bokeh
   """
-  # output to static HTML file
-  print "Setting output file"
-
-  return render_template('plot.html')
-  output_file("plot.html")    
+  #output_file("plot.html")    
 
   dates = stock_df['Date'].tolist()
   opens = stock_df['Open'].tolist()
   closes = stock_df['Close'].tolist()
+
+  print dates
+  print opens
+
   # Create plot
   p = figure(
       tools="pan,box,zoom,reset,save",    
       y_axis_label="Price", y_range=[0.0,10000.0], title=symbol,
-      x_axis_label="Day"
+      x_axis_label="Date", x_axis_type="datetime"
       )
 
   p.line(dates, opens, legend="Open", line_color="blue")
   p.line(dates, closes, legend="Close", line_color="red")
 
-  print "Plotting figure"
-  show(p)
+  script, div = components(p)
 
-  return render_template('plot.html')
+  print "Plotting figure"
+  #show(p)
+
+  return render_template('plot.html',script=script, div=div)
 
 #  return render_template('plot.html')
 
