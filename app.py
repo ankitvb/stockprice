@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect
-#from bokeh.plotting import figure, output_file, show
+from bokeh.plotting import figure, output_file, show
 from bokeh.charts import Line
 from bokeh.embed import components 
 from bokeh.resources import CDN
