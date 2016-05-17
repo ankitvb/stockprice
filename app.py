@@ -70,7 +70,7 @@ def get_data(stock_args):
   
     # Dump data into Pandas dataframe
     df = pd.DataFrame(data[1:], columns=headers)
-    print df 
+    #print df 
 
     plot(df,stock_args['ticker'])
 
@@ -82,6 +82,9 @@ def plot(stock_df,symbol):
   """
   # output to static HTML file
   output_file("plot.html")    
+
+  print stock_df['Date']
+  print stock_df['Open']
   
   # Create plot
   p = figure(
