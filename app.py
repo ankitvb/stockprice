@@ -83,9 +83,9 @@ def plot(stock_df,symbol):
   # output to static HTML file
   output_file("plot.html")    
 
-  print stock_df['Date'].tolist()
-  print stock_df['Open'].tolist()
-  
+  dates = stock_df['Date'].tolist()
+  opens = stock_df['Open'].tolist()
+  closes = stock_df['Close'].tolist()
   # Create plot
   p = figure(
       tools="pan,box,zoom,reset,save",    
@@ -93,8 +93,8 @@ def plot(stock_df,symbol):
       x_axis_label="Day"
       )
 
-  p.line(stock_df['Date'], stock_df['Open'], legend="Open", line_color="blue")
-  p.line(stock_df['Date'], stock_df['Close'], legend="Close", line_color="red")
+  p.line(dates, opens, legend="Open", line_color="blue")
+  p.line(dates, closes, legend="Close", line_color="red")
 
   show(p)
 
