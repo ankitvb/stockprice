@@ -93,8 +93,7 @@ def plot(stock_df,symbol):
   reduced_df = reduced_df.head(n=10)
 
   # Create plot
-  p = Line(reduced_df, x='Date', y='Open', legend="top_right", ylabel="Price")
-  p = Line(reduced_df, x='Date', y='Close', legend="top_right", ylabel="Price")
+  p = Line(reduced_df, x='Date', y=['Open','Close'], legend="top_right", ylabel="Price")
 
   script, div = components(p,CDN)
   
