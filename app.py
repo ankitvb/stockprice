@@ -86,7 +86,7 @@ def get_data(stock_args):
     #    print col
     #    df[str(col)] = df[str(col)].astype(float)
 
-    print df.dtype 
+    print df.dtypes 
 
   return df  
 
