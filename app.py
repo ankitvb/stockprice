@@ -86,7 +86,7 @@ def get_data(stock_args):
     #    print col
     #    df[str(col)] = df[str(col)].astype(float)
 
-    print df 
+    print df.dtype 
 
   return df  
 
@@ -94,8 +94,8 @@ def get_data(stock_args):
 def plot(stock_df,symbol):
   """Generate a embedded html plot from dataframe data with Bokeh
   """
-  stock_df['Open'] = df['Open'].astype(float)
-  stock_df['Close'] = df['Close'].astype(float)
+  stock_df['Open'] = df['Open'].astype('float64')
+  stock_df['Close'] = df['Close'].astype('float64')
 
   reduced_df = stock_df[['Date','Open','Close']].copy()
   reduced_df = reduced_df.head(n=10)
