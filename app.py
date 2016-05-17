@@ -85,6 +85,8 @@ def plot(stock_df,symbol):
   """
   # output to static HTML file
   print "Setting output file"
+
+  return render_template('plot.html')
   output_file("plot.html")    
 
   dates = stock_df['Date'].tolist()
