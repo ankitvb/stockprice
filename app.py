@@ -81,6 +81,10 @@ def get_data(stock_args):
   
     # Dump data into Pandas dataframe
     df = pd.DataFrame(data[1:], columns=headers)
+    for col in data_cols:
+      if col is not 'Date':
+        df.col = df.col.astype(float).fillna(0.0)
+
     #print df 
 
   return df  
