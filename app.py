@@ -22,6 +22,8 @@ def index():
         df = get_data(stock_args)
         if df is not None:
           script,div = plot(df, stock_args['ticker'])
+          print 'script', script
+          print 'div', div
           return render_template('plot.html', script=script, div=div)
         else:
           print "Failed to get data. Abort."
@@ -82,7 +84,7 @@ def get_data(stock_args):
 
   return df  
 
-@app.route('/plot')
+#@app.route('/plot')
 def plot(stock_df,symbol):
   """Generate a embedded html plot from dataframe data with Bokeh
   """
