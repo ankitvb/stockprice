@@ -97,7 +97,7 @@ def plot(stock_df,symbol):
 
   print "Created figure object"
 
-  p.line(dates, opens, legend="Open", line_color="blue")
+  p.line(dates[1:5], opens[1:5], legend="Open", line_color="blue")
   #p.line(dates, closes, legend="Close", line_color="red")
 
   script, div = components(p)
