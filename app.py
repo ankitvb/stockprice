@@ -81,10 +81,10 @@ def get_data(stock_args):
   
     # Dump data into Pandas dataframe
     df = pd.DataFrame(data[1:], columns=headers)
-    for col in data_cols:
-      if col is not 'Date':
-        print col
-        df[str(col)] = df[str(col)].astype(float)
+    #for col in data_cols:
+    #  if col is not 'Date':
+    #    print col
+    #    df[str(col)] = df[str(col)].astype(float)
 
     print df 
 
@@ -94,6 +94,9 @@ def get_data(stock_args):
 def plot(stock_df,symbol):
   """Generate a embedded html plot from dataframe data with Bokeh
   """
+  stock_df['Open'] = df['Open'].astype(float)
+  stock_df['Close'] = df['Close'].astype(float)
+
   reduced_df = stock_df[['Date','Open','Close']].copy()
   reduced_df = reduced_df.head(n=10)
 
