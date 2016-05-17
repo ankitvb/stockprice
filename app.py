@@ -100,6 +100,7 @@ def plot(stock_df,symbol):
   p.line(dates, opens, legend="Open", line_color="blue")
   p.line(dates, closes, legend="Close", line_color="red")
 
+  print "Plotting figure"
   show(p)
 
   return
