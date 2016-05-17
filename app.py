@@ -21,7 +21,7 @@ def index():
         stock_args = dict(request.args.to_dict().items())
         df = get_data(stock_args)
         if df is not None:
-          plot(df, stock_args['ticker'])
+          plot_stock(df, stock_args['ticker'])
         else:
           print "Failed to get data. Abort."
       else:
@@ -82,7 +82,7 @@ def get_data(stock_args):
   return df  
 
 @app.route('/plot')
-def plot(stock_df,symbol):
+def plot_stock(stock_df,symbol):
   """Generate a embedded html plot from dataframe data with Bokeh
   """
   #output_file("plot.html")    
@@ -90,9 +90,6 @@ def plot(stock_df,symbol):
   dates = stock_df['Date'].tolist()
   opens = stock_df['Open'].tolist()
   closes = stock_df['Close'].tolist()
-
-  print dates
-  print opens
 
   # Create plot
   p = figure(
@@ -109,7 +106,7 @@ def plot(stock_df,symbol):
   print "Plotting figure"
   #show(p)
 
-  return render_template('plot.html',script=script, div=div)
+  return render_template('plot.html', script=script, div=div)
 
 #  return render_template('plot.html')
 
