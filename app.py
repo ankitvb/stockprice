@@ -91,16 +91,8 @@ def plot_stock(stock_df,symbol):
   opens = stock_df['Open'].tolist()
   closes = stock_df['Close'].tolist()
 
-  print "Before creating figure"
-
   # Create plot
-  p = figure(
-      tools="pan,box,zoom,reset,save",    
-      y_axis_label="Price", 
-      x_axis_label="Date", 
-      x_axis_type="datetime",
-      title='GOOG'
-      )
+  p = figure(title='GOOG', y_axis_label='Price', x_axis_label='Date')
 
   print "After creating figure"
 
