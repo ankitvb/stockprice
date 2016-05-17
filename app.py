@@ -21,15 +21,15 @@ def index():
         stock_args = dict(request.args.to_dict().items())
         df = get_data(stock_args)
         if df is not None:
-          plot_stock(df, stock_args['ticker'])
+          plot(df, stock_args['ticker'])
         else:
           print "Failed to get data. Abort."
       else:
         print "Args not found"
   except:
     pass
-  else:
-    return render_template('index.html')
+  #else:
+  #  return render_template('index.html')
 
   return render_template('index.html')
 
@@ -82,7 +82,7 @@ def get_data(stock_args):
   return df  
 
 @app.route('/plot')
-def plot_stock(stock_df,symbol):
+def plot(stock_df,symbol):
   """Generate a embedded html plot from dataframe data with Bokeh
   """
   #output_file("plot.html")    
