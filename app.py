@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
-from bokeh.plotting import figure, output_file, show
+#from bokeh.plotting import figure, output_file, show
+from bokeh.charts import Line
 from bokeh.embed import components 
 from bokeh.resources import CDN
 
@@ -89,16 +90,16 @@ def plot(stock_df,symbol):
   """
   #output_file("plot.html")    
 
-  dates = stock_df['Date'].tolist()
-  opens = stock_df['Open'].tolist()
-  closes = stock_df['Close'].tolist()
+  #dates = stock_df['Date'].tolist()
+  #opens = stock_df['Open'].tolist()
+  #closes = stock_df['Close'].tolist()
+  reduced_df = stock_df[['Open','Close']].copy()
+  reduced_df.head(n=5)
 
   # Create plot
-  p = figure(title='GOOG', y_axis_label='Price', x_axis_label='Date', x_axis_type='datetime')
+  #p = figure(title='GOOG', y_axis_label='Price', x_axis_label='Date', x_axis_type='datetime')
+  p = Line(reduced_df, legend="top_right", ylabel="Price")
 
-  print "Created figure object"
-
-  p.line(dates[1:5], opens[1:5], legend="Open", line_color="blue")
   #p.line(dates, closes, legend="Close", line_color="red")
 
   script, div = components(p,CDN)
