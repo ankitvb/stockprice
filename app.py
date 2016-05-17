@@ -100,6 +100,7 @@ def plot_stock(stock_df,symbol):
   p.line(dates, closes, legend="Close", line_color="red")
 
   script, div = components(p)
+  show(p)
 
   print "Plotting figure"
   #show(p)
