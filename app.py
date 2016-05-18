@@ -76,14 +76,10 @@ def get_data(stock_args):
   else:
     data = [list(line.split(',')) for line in res.iter_lines()] 
     headers = data[0]
-    #headers = list(headers.split(','))
     #print headers
   
     # Dump data into Pandas dataframe
     df = pd.DataFrame(data[1:], columns=headers)
-    for col in data_cols:
-      if col != 'Date':
-        df.col = df.col.astype('float64',copy=False)
     #df['Open'] = df['Open'].astype('float64',copy=False)
     #df['Close'] = df['Close'].astype('float64',copy=False)
     #df['Adj. Open'] = df['Adj. Open'].astype('float64',copy=False)
@@ -112,5 +108,4 @@ def plot(stock_df,symbol):
 #  return render_template('plot.html')
 
 if __name__ == '__main__':
-  app.debug = True
-  app.run(port=33507)
+  app.run(port=33507, debug=True)
