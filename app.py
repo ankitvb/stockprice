@@ -82,8 +82,8 @@ def get_data(stock_args):
     # Dump data into Pandas dataframe
     df = pd.DataFrame(data[1:], columns=headers)
     for col in data_cols:
-      if col is not 'Date':
-        df[str(col)] = df[str(col)].astype('float64',copy=False)
+      if col != 'Date':
+        df.col = df.col.astype('float64',copy=False)
     #df['Open'] = df['Open'].astype('float64',copy=False)
     #df['Close'] = df['Close'].astype('float64',copy=False)
     #df['Adj. Open'] = df['Adj. Open'].astype('float64',copy=False)
