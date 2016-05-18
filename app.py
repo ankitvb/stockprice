@@ -85,10 +85,10 @@ def get_data(stock_args):
     #  if col is not 'Date':
     #    print col
     #    df[str(col)] = df[str(col)].astype(float)
-    pd.to_numeric(df['Open'], errors='ignore')
-    pd.to_numeric(df['Close'], errors='ignore')
-    pd.to_numeric(df['Adj. Open'], errors='ignore')    
-    pd.to_numeric(df['Adj. Close'], errors='ignore')
+    df['Open'] = df['Open'].astype('float64',copy=False)
+    df['Close'] = df['Close'].astype('float64',copy=False)
+    df['Adj. Open'] = df['Adj. Open'].astype('float64',copy=False)
+    df['Adj. Close'] = df['Adj. Close'].astype('float64',copy=False)
 
     print df.dtypes 
 
