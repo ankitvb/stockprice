@@ -80,6 +80,7 @@ def get_data(stock_args):
   
     # Dump data into Pandas dataframe
     df = pd.DataFrame(data[1:], columns=headers)
+    df[['Open', 'Close', 'Adj. Open', 'Adj. Close']] = df[['Open', 'Close', 'Adj. Open', 'Adj. Close']].astype('float64',copy=False)
     #df['Open'] = df['Open'].astype('float64',copy=False)
     #df['Close'] = df['Close'].astype('float64',copy=False)
     #df['Adj. Open'] = df['Adj. Open'].astype('float64',copy=False)
