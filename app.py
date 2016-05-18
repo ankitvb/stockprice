@@ -25,7 +25,7 @@ def index():
         df = get_data(stock_args)
         if df is not None:
           script,div = plot(df, stock_args['ticker'])
-          return render_template('plot.html', script=script, div=div)
+          return render_template('plot.html', script=script, div=div, symbol=stock_args['ticker'])
         else:
           print "Failed to get data. Abort."
       else:
@@ -80,13 +80,10 @@ def get_data(stock_args):
   
     # Dump data into Pandas dataframe
     df = pd.DataFrame(data[1:], columns=headers)
-    df[['Open', 'Close', 'Adj. Open', 'Adj. Close']] = df[['Open', 'Close', 'Adj. Open', 'Adj. Close']].astype('float64',copy=False)
-    #df['Open'] = df['Open'].astype('float64',copy=False)
-    #df['Close'] = df['Close'].astype('float64',copy=False)
-    #df['Adj. Open'] = df['Adj. Open'].astype('float64',copy=False)
-    #df['Adj. Close'] = df['Adj. Close'].astype('float64',copy=False)
+    df[['Open', 'Close', 'Adj. Open', 'Adj. Close']]  \
+    = df[['Open', 'Close', 'Adj. Open', 'Adj. Close']].astype('float64',copy=False)
 
-    print df.dtypes 
+    #print df.dtypes 
 
   return df  
 
@@ -98,7 +95,9 @@ def plot(stock_df,symbol):
   reduced_df = reduced_df.head(n=10)
 
   # Create plot
-  p = Line(reduced_df, x='Date', y=['Open','Close'], legend="top_right", ylabel="Price")
+  ylabel = symbol + " stock price ($)"
+
+  p = Line(reduced_df, x='Date', y=['Open','Close'], legend="top_right", ylabel=ylabel)
 
   script, div = components(p,CDN)
   
